@@ -1,3 +1,15 @@
+0.17.0.0
+========
+- @bitemyapp
+  - Removed V1 modules and support.
+  - Removed the cabal file, replaced with an Hpack `package.yaml`.
+- @JoseD92
+  - Removed the disused `Seminearring` class.
+  - Added Docker Compose support.
+  - Add support for unassigned.node_left.delayed_timeout index setting
+- @Kheldar, @AlexeyRaga, @dsturnbull
+  - Added support for BulkUpsert operations that allow for additional metadata.
+
 0.16.0.0
 ========
 - @bitemyapp
@@ -22,9 +34,13 @@
   - Add the "stemmer" and "stop" [token filters][] to `TokenFilterDefinition`.
 - @ahodgen
   - Add support for wildcard queries
+- @ashutoshrishi
+  - Added [fuzziness][] option to a Match Query
+  - Added support for "AUTO" Fuzziness alongside a numeric value.
 
 [Character Filters]: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/analysis-charfilters.html
 [Token Filters]: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/analysis-tokenfilters.html
+[Fuzziness]: https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#fuzziness
 
 0.15.0.2
 ========

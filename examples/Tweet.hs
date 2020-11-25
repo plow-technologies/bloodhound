@@ -14,7 +14,7 @@ import           Data.Text              (Text)
 import           Data.Time.Calendar     (Day (..))
 import           Data.Time.Clock        (UTCTime (..), secondsToDiffTime)
 import qualified Data.Vector            as V
-import           Database.V5.Bloodhound
+import           Database.Bloodhound
 import           GHC.Generics           (Generic)
 import           Network.HTTP.Client    (defaultManagerSettings)
 
@@ -83,7 +83,7 @@ main = runBH' $ do
   True <- indexExists aliasName
 
   -- create a template so that if we just write into an index named tweet-2017-01-02, for instance, the index will be automatically created with the given mapping. This is a great idea for any ongoing indices because it makes them much easier to manage and rotate.
-  let idxTpl = IndexTemplate (TemplatePattern "tweet-*") (Just (IndexSettings (ShardCount 1) (ReplicaCount 1))) [toJSON TweetMapping]
+  let idxTpl = IndexTemplate (TemplatePattern "tweet-*") (Just (IndexSettings (ShardCount 1) (ReplicaCount 1))) [object ["tweet" .= toJSON TweetMapping]]
   let templateName = TemplateName "tweet-tpl"
   _ <- putTemplate idxTpl templateName
   True <- templateExists templateName
